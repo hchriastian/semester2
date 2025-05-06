@@ -2,12 +2,11 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 
-# Load dataset
-file_path = 'iot_agr_2024.csv'  # Ganti path jika file berada di lokasi berbeda
-df = pd.read_csv(file_path)
+# Load data
+df = pd.read_csv('dataset_cancer_paru.csv')
 
-# Kolom yang akan dianalisis
-kolom_analisis = ['tempreature', 'humidity', 'water_level', 'N', 'P', 'K']
+# Pilih kolom numerik
+kolom_numerik = df.select_dtypes(include=[np.number]).columns.tolist()
 
 # Fungsi analisis pemusatan data
 def analisis_pemusatan(df, kolom):
@@ -25,9 +24,6 @@ def analisis_pemusatan(df, kolom):
         })
     return pd.DataFrame(hasil)
 
-# Jalankan analisis
-hasil_analisis = analisis_pemusatan(df, kolom_analisis)
-
-# Tampilkan hasil
-print("Analisis Pemusatan Data:")
+# Jalankan analisis dan tampilkan hasil
+hasil_analisis = analisis_pemusatan(df, kolom_numerik)
 print(hasil_analisis)
