@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Click the Button Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #gameButton {
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #score, #timer {
+            font-size: 24px;
+            margin: 20px;
+        }
+        #message {
+            font-size: 28px;
+            color: green;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the Button Game</h1>
+    <p>Click the button as many times as you can in 10 seconds!</p>
+    <button id="gameButton">Click me!</button>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time left: 10s</div>
+    <div id="message"></div>
+
+    <script>
+        const gameButton = document.getElementById('gameButton');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        const messageDisplay = document.getElementById('message');
+
+        let score = 0;
+        let timeLeft = 10;
+        let gameActive = false;
+        let timerId;
+
+        function startGame() {
+            score = 0;
+            timeLeft = 10;
+            gameActive = true;
+            scoreDisplay.textContent = 'Score: ' + score;
+            timerDisplay.textContent = 'Time left: ' + timeLeft + 's';
+            messageDisplay.textContent = '';
+            gameButton.disabled = false;
+
+            timerId = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = 'Time left: ' + timeLeft + 's';
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(timerId);
+            gameButton.disabled = true;
+            messageDisplay.textContent = 'Game over! Your final score is ' + score + '.';
+            gameButton.textContent = 'Play Again';
+        }
+
+        gameButton.addEventListener('click', () => {
+            if (!gameActive) {
+                gameButton.textContent = 'Click me!';
+                startGame();
+            } else {
+                score++;
+                scoreDisplay.textContent = 'Score: ' + score;
+            }
+        });
+    </script>
+</body>
+</html>
