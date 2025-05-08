@@ -1,0 +1,49 @@
+Rute yang ditempuh dari Pos menuju Blok F menggunakan algoritme Greedy Best First Search adalah sebagai berikut:
+
+Diketahui nilai heuristic jarak garis lurus ke Blok F:
+Pos: 700 meter
+Blok A: 600 meter
+Blok B: 400 meter
+Blok C: 500 meter
+Blok D: 205 meter
+Blok E: 200 meter
+Blok F: 0 meter
+
+Algoritme Greedy Best First Search memilih rute dengan heuristic terkecil menuju tujuan pada setiap langkah.
+
+Langkah-langkah rute:
+1. Mulai dari Pos (700 meter)
+2. Pilih blok dengan heuristic terkecil dari Pos, yaitu Blok E (200 meter)
+3. Dari Blok E, langsung menuju Blok F (0 meter)
+
+Jadi, rute yang ditempuh adalah:
+Pos -> Blok E -> Blok F
+
+Soal no 2. Rute yang ditempuh dari Pos menuju Blok F menggunakan algoritme A* adalah sebagai berikut:
+
+Algoritme A* mempertimbangkan biaya dari titik awal ke node saat ini (g(n)) dan heuristic jarak garis lurus ke tujuan (h(n)) untuk memilih rute terbaik.
+
+Diketahui heuristic jarak garis lurus ke Blok F:
+Pos: 700 meter
+Blok A: 600 meter
+Blok B: 400 meter
+Blok C: 500 meter
+Blok D: 205 meter
+Blok E: 200 meter
+Blok F: 0 meter
+
+Asumsi biaya antar node adalah jarak sebenarnya yang tidak diberikan secara eksplisit, sehingga kita asumsikan biaya antar node sama dengan heuristic jarak garis lurus untuk ilustrasi.
+
+Langkah-langkah rute dengan A*:
+1. Mulai dari Pos (g=0, h=700)
+2. Pilih node dengan nilai f(n) = g(n) + h(n) terkecil
+3. Dari Pos, node terdekat adalah Blok E (h=200), sehingga f(Blok E) = g(Pos) + biaya(Pos ke Blok E) + h(Blok E) = 0 + 200 + 200 = 400
+4. Dari Blok E, langsung ke Blok F (h=0), f(Blok F) = g(Blok E) + biaya(Blok E ke Blok F) + h(Blok F) = 200 + 200 + 0 = 400
+
+Jadi, rute yang ditempuh adalah:
+Pos -> Blok E -> Blok F
+
+
+
+
+

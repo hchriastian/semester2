@@ -1,0 +1,36 @@
+Untuk menjawab soal nomor 3, kita perlu menggunakan metode fuzzy logic Tsukamoto. Berikut adalah langkah-langkah penyelesaian:
+
+1. **Fuzzifikasi**:
+    - PH tanah adalah 8.2, sehingga keanggotaan PH adalah:
+      - PH Netral: μ = (9 - 8.2) / (9 - 7) = 0.4
+      - PH Basa: μ = (8.2 - 7) / (9 - 7) = 0.6
+    - Kelembaban tanah adalah 2, sehingga keanggotaan Kelembaban adalah:
+      - Kering: μ = (40 - 2) / (40 - 0) = 0.95
+      - Normal: μ = (2 - 0) / (40 - 0) = 0.05
+
+2. **Inferensi**:
+    Berdasarkan tabel aturan:
+    - Rule 1: Jika Kelembaban Kering dan PH Netral, maka Durasi = Long.
+      - α1 = min(0.95, 0.4) = 0.4
+      - z1 = 40 + (90 - 40) * 0.4 = 60
+    - Rule 2: Jika Kelembaban Kering dan PH Basa, maka Durasi = Long.
+      - α2 = min(0.95, 0.6) = 0.6
+      - z2 = 40 + (90 - 40) * 0.6 = 70
+    - Rule 3: Jika Kelembaban Normal dan PH Netral, maka Durasi = Medium.
+      - α3 = min(0.05, 0.4) = 0.05
+      - z3 = 28 + (40 - 28) * 0.05 = 28.6
+    - Rule 4: Jika Kelembaban Normal dan PH Basa, maka Durasi = Medium.
+      - α4 = min(0.05, 0.6) = 0.05
+      - z4 = 28 + (40 - 28) * 0.05 = 28.6
+
+3. **Defuzzifikasi**:
+    Menggunakan rata-rata berbobot:
+    ```
+    z = (α1 * z1 + α2 * z2 + α3 * z3 + α4 * z4) / (α1 + α2 + α3 + α4)
+    z = (0.4 * 60 + 0.6 * 70 + 0.05 * 28.6 + 0.05 * 28.6) / (0.4 + 0.6 + 0.05 + 0.05)
+    z = (24 + 42 + 1.43 + 1.43) / 1.1
+    z = 68.86 / 1.1
+    z ≈ 62.6 menit
+    ```
+
+Jadi, durasi penyemprotan adalah **62.6 menit**.
